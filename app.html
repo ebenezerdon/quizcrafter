@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>QuizCrafter App</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  <link rel="stylesheet" href="styles/tailwind.css" data-teda="tailwind-static" />
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
 <body class="bg-slate-50 text-slate-900 antialiased min-h-screen">
   <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
     <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
@@ -22,28 +22,7 @@
     </div>
   </header>
 
-  <style type="text/tailwindcss" data-teda="tailwind-apply">
-    @layer components {
-      .btn-primary { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full bg-rose-600 px-5 py-2.5 text-white text-sm font-semibold shadow-sm hover:bg-rose-700 active:bg-rose-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 transition; }
-      .btn-secondary { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200 transition; }
-      .btn-ghost { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200 transition; }
-      .input { @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none; }
-      .toggle { @apply h-5 w-10 bg-slate-200 rounded-full relative cursor-pointer transition; }
-      .card { @apply rounded-2xl bg-white shadow-lg ring-1 ring-slate-100; }
-      .pill { @apply inline-flex items-center rounded-full bg-sky-100 text-sky-800 text-xs font-semibold px-2.5 py-1; }
-      .kicker { @apply uppercase tracking-[0.2em] text-[11px] font-bold text-slate-500; }
-      .menu-btn { @apply text-slate-500 hover:text-slate-800 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-slate-200; }
-      .answer-btn { @apply w-full text-left rounded-xl border border-slate-300 px-4 py-3 text-sm hover:border-rose-400 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-200 transition; }
-      .answer-selected { @apply border-rose-500 bg-rose-50; }
-      .answer-correct { @apply border-emerald-500 bg-emerald-50; }
-      .answer-wrong { @apply border-rose-600 bg-rose-50; }
-      .progress-track { @apply h-2 w-full rounded-full bg-slate-200 overflow-hidden; }
-      .progress-bar { @apply h-full rounded-full bg-rose-600 transition-all; }
-      .tab-btn { @apply whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-200; }
-      .tab-btn.active { @apply bg-slate-900 text-white hover:bg-slate-900; }
-      .toast { @apply fixed bottom-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-slate-900 text-white text-sm shadow-lg; }
-    }
-  </style>
+  
 
   <main class="mx-auto max-w-7xl px-6 py-8 md:py-10">
     <div class="flex flex-col md:flex-row gap-6">

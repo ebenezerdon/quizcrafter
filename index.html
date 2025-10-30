@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuizCrafter – Build smarter quizzes from CSV</title>
+  <meta name="description" content="Import CSV, randomize questions, and track scores with a delightful, responsive quiz maker.">
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style type="text/tailwindcss" data-teda="tailwind-apply">
+    @layer components {
+      .btn-primary { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full bg-rose-600 px-5 py-2.5 text-white text-sm font-semibold shadow-sm hover:bg-rose-700 active:bg-rose-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 transition; }
+      .btn-secondary { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200 transition; }
+      .btn-ghost { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200 transition; }
+      .chip { @apply inline-flex items-center gap-2 rounded-full bg-amber-100 text-amber-900 px-3 py-1 text-xs font-semibold; }
+      .badge { @apply inline-flex items-center rounded-full bg-sky-100 text-sky-800 px-2 py-0.5 text-[11px] font-medium; }
+      .card { @apply rounded-2xl bg-white shadow-lg ring-1 ring-slate-100; }
+      .input { @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none; }
+      .link-accent { @apply text-rose-600 hover:text-rose-700 underline decoration-rose-300 hover:decoration-rose-400 underline-offset-4; }
+      .kicker { @apply uppercase tracking-[0.2em] text-[11px] font-bold text-slate-500; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900 antialiased">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2" aria-label="QuizCrafter home">
+        <div class="h-8 w-8 rounded-xl bg-rose-600 text-white grid place-items-center font-black">Q</div>
+        <span class="text-slate-900 font-semibold tracking-tight">QuizCrafter</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-2">
+        <a href="#features" class="btn-ghost">Features</a>
+        <a href="#how" class="btn-ghost">How it works</a>
+        <a href="app.html" class="btn-primary">Open App</a>
+      </nav>
+      <a href="app.html" class="md:hidden btn-primary">Open App</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero: asymmetrical, modular blocks -->
+    <section class="relative overflow-hidden">
+      <div class="mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <div class="max-w-3xl">
+          <p class="kicker">Study faster</p>
+          <h1 class="mt-3 text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+            Turn simple CSV files into beautiful quizzes.
+          </h1>
+          <p class="mt-5 text-lg md:text-xl text-slate-600 max-w-2xl">
+            Import, randomize, and track your scores with a delightful quiz maker that just works. Designed for learners, teachers, and teams.
+          </p>
+          <div class="mt-8 flex items-center gap-3">
+            <a href="app.html" class="btn-primary">Build your quiz</a>
+            <a href="#features" class="btn-secondary">See what it does</a>
+          </div>
+        </div>
+
+        <!-- Floating mosaic -->
+        <div class="relative mt-14">
+          <div class="grid grid-cols-12 gap-4 md:gap-6">
+            <div class="col-span-7 md:col-span-5 translate-y-3">
+              <div class="card p-5 md:p-6">
+                <div class="flex items-center justify-between">
+                  <span class="chip">CSV import</span>
+                  <span class="badge">Drag & Drop</span>
+                </div>
+                <div class="mt-4 space-y-2 text-sm">
+                  <div class="flex items-center gap-2">
+                    <div class="h-2 w-2 rounded-full bg-rose-500"></div>
+                    <span class="font-medium">question</span>
+                    <span class="text-slate-400">,</span>
+                    <span class="text-slate-600">answer</span>
+                    <span class="text-slate-400">,</span>
+                    <span class="text-slate-600">option1</span>
+                  </div>
+                  <div class="h-2.5 bg-slate-100 rounded-full w-4/5"></div>
+                  <div class="h-2.5 bg-slate-100 rounded-full w-3/5"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-5 md:col-span-3 -translate-y-2">
+              <div class="card p-5 md:p-6">
+                <div class="text-xs uppercase tracking-widest text-slate-500">Randomize</div>
+                <div class="mt-3 flex flex-col gap-2">
+                  <div class="h-8 rounded-lg bg-sky-100"></div>
+                  <div class="h-8 rounded-lg bg-amber-100 w-4/5"></div>
+                  <div class="h-8 rounded-lg bg-sky-100 w-3/4"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-12 md:col-span-4 md:translate-y-5">
+              <div class="card p-6 md:p-7">
+                <div class="flex items-center gap-3">
+                  <div class="h-10 w-10 rounded-2xl bg-amber-400/90 grid place-items-center text-white font-black">A</div>
+                  <div>
+                    <div class="text-sm text-slate-500">Your best score</div>
+                    <div class="text-2xl font-bold">92%</div>
+                  </div>
+                </div>
+                <div class="mt-4 grid grid-cols-12 gap-1 h-12">
+                  <div class="col-span-2 bg-rose-200 rounded"></div>
+                  <div class="col-span-3 bg-rose-300 rounded"></div>
+                  <div class="col-span-2 bg-rose-400 rounded"></div>
+                  <div class="col-span-5 bg-rose-500 rounded"></div>
+                </div>
+                <div class="mt-3 text-sm text-slate-600">Track attempts automatically with local storage.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="relative py-16 md:py-24">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="max-w-3xl">
+          <p class="kicker">Why QuizCrafter</p>
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">Thoughtful features that help you learn.</h2>
+        </div>
+        <div class="mt-10 space-y-10">
+          <div class="md:max-w-3xl">
+            <div class="card p-6 md:p-8">
+              <h3 class="text-xl font-bold">CSV in, quiz out</h3>
+              <p class="mt-2 text-slate-600">Paste or upload CSV with columns: question, answer, option1, option2, option3. Supports quoted text and commas. If you only provide question and answer, it becomes a short-answer question.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="assets/sample.csv" class="btn-secondary">Download sample CSV</a>
+                <a href="app.html" class="btn-primary">Try it now</a>
+              </div>
+            </div>
+          </div>
+          <div class="md:ml-20 md:max-w-2xl">
+            <div class="card p-6 md:p-8">
+              <h3 class="text-xl font-bold">Randomization that keeps you sharp</h3>
+              <p class="mt-2 text-slate-600">Shuffle questions and answer choices every run. Limit questions to run quick drills or go for full-length reviews.</p>
+            </div>
+          </div>
+          <div class="md:max-w-4xl">
+            <div class="card p-6 md:p-8">
+              <h3 class="text-xl font-bold">Progress you can see</h3>
+              <p class="mt-2 text-slate-600">Every attempt is saved locally with score and time. See your improvement at a glance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="py-16 md:py-24 bg-white">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card p-6">
+            <div class="kicker">Step 1</div>
+            <h4 class="mt-1 font-semibold">Import</h4>
+            <p class="mt-2 text-slate-600">Upload or paste your CSV. We parse quotes, tabs, commas, and semicolons.</p>
+          </div>
+          <div class="card p-6">
+            <div class="kicker">Step 2</div>
+            <h4 class="mt-1 font-semibold">Customize</h4>
+            <p class="mt-2 text-slate-600">Name it, preview questions, and save. Your quizzes live in your browser.</p>
+          </div>
+          <div class="card p-6">
+            <div class="kicker">Step 3</div>
+            <h4 class="mt-1 font-semibold">Practice</h4>
+            <p class="mt-2 text-slate-600">Randomize, drill, and track your scores over time.</p>
+          </div>
+        </div>
+        <div class="mt-10">
+          <a href="app.html" class="btn-primary">Open the app</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-6 py-10 text-sm text-slate-600 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div>
+        <div class="font-semibold text-slate-900">QuizCrafter</div>
+        <div class="mt-1">Build smarter quizzes from CSV. Your data stays on your device.</div>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="assets/sample.csv" class="link-accent">Sample CSV</a>
+        <a href="app.html" class="btn-secondary">Launch app</a>
+      </div>
+    </div>
+  </footer>
+  <script src="scripts/helpers.js"></script>
+  <script src="scripts/ui.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

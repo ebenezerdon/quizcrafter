@@ -1,0 +1,35 @@
+/* QuizCrafter styles: custom CSS only, no Tailwind directives here */
+:root {
+  --rose: #e11d48;
+  --slate-900: #0f172a;
+}
+
+html { scroll-behavior: smooth; }
+
+/***** Micro interactions *****/
+#csvDropZone.dragover {
+  border-color: var(--rose);
+  background: rgba(225, 29, 72, 0.04);
+}
+
+/***** Toast *****/
+#toast.show { animation: toast-in 200ms ease-out; }
+@keyframes toast-in { from { transform: translate(-50%, 10px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+
+/***** History chart *****/
+#historyChart .bar { border-radius: 6px 6px 0 0; background: var(--rose); transition: height 180ms ease, transform 180ms ease; }
+#historyChart .bar:hover { transform: translateY(-2px); }
+
+/***** Accessible focus for keyboard users *****/
+:focus-visible { outline: 2px solid rgba(225, 29, 72, 0.5); outline-offset: 2px; }
+
+/***** Horizontal table scroll container *****/
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-scroll table { border-collapse: collapse; width: 100%; min-width: 560px; }
+.table-scroll th, .table-scroll td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; font-size: 14px; }
+.table-scroll th { background: #f8fafc; text-align: left; position: sticky; top: 0; z-index: 1; }
+
+/***** Reduce motion respect *****/
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

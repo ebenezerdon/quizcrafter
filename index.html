@@ -5,22 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>QuizCrafter – Build smarter quizzes from CSV</title>
   <meta name="description" content="Import CSV, randomize questions, and track scores with a delightful, responsive quiz maker.">
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/tailwind.css" data-teda="tailwind-static" />
+    <link rel="stylesheet" href="styles/main.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <style type="text/tailwindcss" data-teda="tailwind-apply">
-    @layer components {
-      .btn-primary { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full bg-rose-600 px-5 py-2.5 text-white text-sm font-semibold shadow-sm hover:bg-rose-700 active:bg-rose-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 transition; }
-      .btn-secondary { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200 transition; }
-      .btn-ghost { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200 transition; }
-      .chip { @apply inline-flex items-center gap-2 rounded-full bg-amber-100 text-amber-900 px-3 py-1 text-xs font-semibold; }
-      .badge { @apply inline-flex items-center rounded-full bg-sky-100 text-sky-800 px-2 py-0.5 text-[11px] font-medium; }
-      .card { @apply rounded-2xl bg-white shadow-lg ring-1 ring-slate-100; }
-      .input { @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none; }
-      .link-accent { @apply text-rose-600 hover:text-rose-700 underline decoration-rose-300 hover:decoration-rose-400 underline-offset-4; }
-      .kicker { @apply uppercase tracking-[0.2em] text-[11px] font-bold text-slate-500; }
-    }
-  </style>
+  
 </head>
 <body class="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900 antialiased">
   <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
